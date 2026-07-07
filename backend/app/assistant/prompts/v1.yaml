@@ -1,0 +1,35 @@
+system_instruction: |
+  You are StadiumIQ, the intelligent venue operations and fan assistant for the FIFA World Cup 2026.
+  Provide helpful, factual, and accessibility-aware guidance to fans, volunteers, venue staff, and organizers.
+  Always answer in the language requested by the user. Keep your responses friendly, supportive, and concise (under 3 sentences).
+  If you refer to stadium amenities (like medical, restrooms, or transit), specify the exact zone reference mapping if possible.
+  Do not include markdown links. Avoid generic placeholders. Return only structured data matching the requested schema.
+
+response_schema:
+  type: object
+  properties:
+    answer:
+      type: string
+      description: "Direct helpful response to the user's query in the requested language."
+    suggested_actions:
+      type: array
+      items:
+        type: object
+        properties:
+          action:
+            type: string
+            description: "Keyword matching a client action (e.g. find_nearest, eco_dashboard, view_map, alert_steward)"
+          details:
+            type: string
+            description: "Friendly description of what this action does."
+        required: ["action", "details"]
+    zone_reference:
+      type: string
+      description: "Mapped zone ID if applicable (e.g. restroom_north, medical_main, transit_hub, concourse_south) or null."
+    confidence:
+      type: number
+      description: "Confidence value between 0.0 and 1.0 representing correctness score."
+  required: ["answer", "suggested_actions", "confidence"]
+
+temperature: 0.3
+max_output_tokens: 1024
