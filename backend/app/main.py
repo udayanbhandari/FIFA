@@ -31,8 +31,7 @@ logger = logging.getLogger("stadiumiq")
 logger.setLevel(logging.INFO)
 log_handler = logging.StreamHandler(sys.stdout)
 formatter = jsonlogger.JsonFormatter(
-    "%(timestamp)s %(severity)s %(name)s %(message)s",
-    rename_fields={"asctime": "timestamp", "levelname": "severity"},
+    "%(asctime)s %(levelname)s %(name)s %(message)s"
 )
 log_handler.setFormatter(formatter)
 logger.addHandler(log_handler)
