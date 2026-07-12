@@ -26,7 +26,7 @@ class Settings(BaseSettings):
     use_gemini: bool = False
     use_firestore: bool = False
     gemini_prompt_version: str = "v1"
-    allowed_origins: str = "http://localhost:5173,http://localhost:3000"
+    allowed_origins: str = "http://localhost:5173,http://localhost:3000,https://fifa-check.netlify.app"
     # Vercel injects VERCEL_URL automatically (e.g. "my-app.vercel.app")
     vercel_url: str = ""
 
